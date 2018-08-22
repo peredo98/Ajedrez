@@ -2,13 +2,10 @@ import java.awt.Graphics;
 
 public abstract class Piece{
 
-<<<<<<< HEAD
-=======
 	protected Casilla casillaOrigen;
 	protected Casilla casillaActual;
 	protected Casilla casillaDestino;
 	
->>>>>>> Cris
 	public Piece(){
 
 	}
