@@ -4,14 +4,16 @@ import java.awt.Graphics;
 import java.awt.Color;
 public class Main extends Canvas implements Runnable{
 	public static final int width = 600;
-	public static final int height = 600;
+	public static final int height = 629;
 	private Thread thread;
 	private boolean running = false;
 
 	public PieceManager pm;
+	public Tablero board;
 
 	public Main(){
 		pm = new PieceManager();
+		board = new Tablero();
 		//MouseInput mi = new MouseInput(handler);
 		//this.addKeyListener(new KeyInput(handler));
 		//this.addMouseMotionListener(mi);
@@ -74,7 +76,9 @@ public class Main extends Canvas implements Runnable{
 		g.setColor(Color.black);
 		g.fillRect(0, 0, width, height);
 
+		board.tRender(g);
 		pm.render(g);
+
 		
 		g.dispose();
 		bs.show();

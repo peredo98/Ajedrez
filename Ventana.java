@@ -19,10 +19,8 @@ public class Ventana extends Canvas implements ActionListener{
 		frame.add(b);
 		b.addActionListener(this);
 
-		frame.setPreferredSize(new Dimension(width, height));
-		frame.setMaximumSize(new Dimension(width, height));
-		frame.setMinimumSize(new Dimension(width, height));
-		
+
+		frame.setSize(width, height);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
