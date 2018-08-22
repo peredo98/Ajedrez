@@ -8,14 +8,14 @@ public class Main extends Canvas implements Runnable{
 	private Thread thread;
 	private boolean running = false;
 
-	public Handler handler;
+	public PieceManager pm;
 
 	public Main(){
-		PieceManager = new PieceManager();
-		MouseInput mi = new MouseInput(handler);
-		this.addKeyListener(new KeyInput(handler));
-		this.addMouseMotionListener(mi);
-		this.addMouseListener(mi);
+		pm = new PieceManager();
+		//MouseInput mi = new MouseInput(handler);
+		//this.addKeyListener(new KeyInput(handler));
+		//this.addMouseMotionListener(mi);
+		//this.addMouseListener(mi);
 
 	 	new Ventana(width, height, "Don Chuy's Legendary Taco", this);
 	}
