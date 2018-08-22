@@ -3,8 +3,8 @@ import java.awt.image.BufferStrategy;
 import java.awt.Graphics;
 import java.awt.Color;
 public class Main extends Canvas implements Runnable{
-	public static final int width = 800;
-	public static final int height = 800;
+	public static final int width = 600;
+	public static final int height = 600;
 	private Thread thread;
 	private boolean running = false;
 
@@ -17,7 +17,7 @@ public class Main extends Canvas implements Runnable{
 		//this.addMouseMotionListener(mi);
 		//this.addMouseListener(mi);
 
-	 	new Ventana(width, height, "Don Chuy's Legendary Taco", this);
+	 	new Ventana(width, height, "Ajedrez", this);
 	}
 	public synchronized void start(){
 		thread = new Thread(this);
@@ -60,7 +60,7 @@ public class Main extends Canvas implements Runnable{
 		stop();
 	}
 	private void tick(){
-		PieceManager.tick();
+		pm.tick();
 	}
 	private void render(){
 		BufferStrategy bs = this.getBufferStrategy();
@@ -74,7 +74,7 @@ public class Main extends Canvas implements Runnable{
 		g.setColor(Color.black);
 		g.fillRect(0, 0, width, height);
 
-		PieceManager.render(g);
+		pm.render(g);
 		
 		g.dispose();
 		bs.show();
