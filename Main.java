@@ -3,7 +3,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.Graphics;
 import java.awt.Color;
 public class Main extends Canvas implements Runnable{
-	public static final int width = 600;
+	public static final int width = 606;
 	public static final int height = 629;
 	private Thread thread;
 	private boolean running = false;
@@ -14,10 +14,9 @@ public class Main extends Canvas implements Runnable{
 	public Main(){
 		pm = new PieceManager();
 		board = new Tablero();
-		//MouseInput mi = new MouseInput(handler);
-		//this.addKeyListener(new KeyInput(handler));
-		//this.addMouseMotionListener(mi);
-		//this.addMouseListener(mi);
+		MouseInput mi = new MouseInput();
+		this.addMouseMotionListener(mi);
+		this.addMouseListener(mi);
 
 	 	new Ventana(width, height, "Ajedrez", this);
 	}
