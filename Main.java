@@ -12,8 +12,9 @@ public class Main extends Canvas implements Runnable{
 	public Tablero board;
 
 	public Main(){
-		pm = new PieceManager();
 		board = new Tablero();
+		pm = new PieceManager();
+		pm.setBoard();
 		MouseInput mi = new MouseInput();
 		this.addMouseMotionListener(mi);
 		this.addMouseListener(mi);

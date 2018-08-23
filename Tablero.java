@@ -4,10 +4,14 @@ import java.awt.Color;
 
 public class Tablero{
 
-	public Casilla tablero [][] = new Casilla [8][8];
+	public static Casilla tablero [][] = new Casilla [8][8];
 
 	public Tablero(){
-
+		for(int i = 0; i<tablero.length; i++){
+			for(int j = 0; j<tablero.length; j++){
+				tablero[i][j] = new Casilla(i, j);
+			}
+		}
 	}
 
 	public void tRender(Graphics g){
@@ -19,7 +23,7 @@ public class Tablero{
 				}
 
 				else{
-					g.setColor(Color.black);
+					g.setColor(Color.gray);
 				}
 
 				g.fillRect(i*75, j*75, 75, 75);
