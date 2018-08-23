@@ -1,5 +1,6 @@
 public class Casilla{
 	private int x,y;
+	public boolean isMarked;
 
 	public Casilla(int x, int y){
 		this.x = x;

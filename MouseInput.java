@@ -27,8 +27,11 @@ public class MouseInput extends MouseInputAdapter{
 			}
 		}
 		if(selectedPiece != null){
+			selectedPiece.mover();
+			Tablero.marcarCasillas(selectedPiece);
 			selectedPiece.setX(e.getX()-29);
 			selectedPiece.setY(e.getY()-29);
+
 		}
 	}
 }

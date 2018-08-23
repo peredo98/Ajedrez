@@ -3,6 +3,8 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.awt.Graphics;
+import java.util.LinkedList;
+
 
 public class Peon extends Piece{
 
@@ -34,5 +36,16 @@ public class Peon extends Piece{
 			img = img.getSubimage(533, 106, 106, 106);
 		}
 		g.drawImage(img, x, y, 58, 58, null);
+	}
+
+	public void mover(){
+		if(isWhite){
+			CasillasDestino.add(Tablero.tablero[casillaActual.getX()][casillaActual.getY() - 1]);
+		}
+		else{
+			CasillasDestino.add(Tablero.tablero[casillaActual.getX()][casillaActual.getY() + 1]);
+		}
+		verificar();
+
 	}
 }

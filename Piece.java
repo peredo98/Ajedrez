@@ -3,14 +3,17 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 import java.io.IOException;
+import java.util.LinkedList;
 
 public abstract class Piece{
 
-	public Casilla casillaActual, casillaDestino;
+	public Casilla casillaActual;
 	protected int x, y, id;
 	protected BufferedImage img = null;
 
 	protected boolean isWhite;
+
+	public LinkedList<Casilla> CasillasDestino = new LinkedList<Casilla>();
 	
 	public Piece(int id, boolean isWhite){
 		this.id = id;
@@ -46,6 +49,15 @@ public abstract class Piece{
 		}
 	}
 
+	public void verificar(){
+		for(int i = 0; i < PieceManager.pieces.size(); i++){
+			if(this.isWhite == PieceManager.pieces.get(i).isWhite){
+				CasillasDestino.remove(PieceManager.pieces.get(i).casillaActual);
+			}
+		}
+	}
+
+	public abstract void mover();
 	public abstract void tick();
 	public abstract void render(Graphics g);
 }
