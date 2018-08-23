@@ -31,6 +31,17 @@ public class Tablero{
 		}
 	}
 
+	public static void movePiece(Piece piece){
+		for(int i = 0; i<tablero.length; i++){
+			for(int j = 0; j<tablero.length; j++){
+				if((piece.getX() + 29) >= (i*75) && (piece.getX() + 29)  <= ((i+1)*75) && (piece.getY() + 29)  >= (j*75) && (piece.getY() + 29) <= ((j+1)*75)){
+					piece.casillaActual = tablero[i][j];
+					piece.centrarPieza();
+				}
+			}
+		}
+	}
+
 	public enum cellState{
 		None(),
 		Friendly(),

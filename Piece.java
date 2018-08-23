@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public abstract class Piece{
 
-	protected Casilla casillaActual, casillaDestino;
+	public Casilla casillaActual, casillaDestino;
 	protected int x, y, id;
 	protected BufferedImage img = null;
 
@@ -43,7 +43,6 @@ public abstract class Piece{
 		setY((casillaActual.getY() * 75) + 11);
 		}
 		catch(NullPointerException e){
-			System.out.println("no");
 		}
 	}
 

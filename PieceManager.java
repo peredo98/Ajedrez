@@ -3,7 +3,7 @@ import java.util.LinkedList;
 
 public class PieceManager{
 
-	LinkedList<Piece> pieces = new LinkedList<Piece>();
+	public static LinkedList<Piece> pieces = new LinkedList<Piece>();
 
 	public void tick(){
 		for(int i = 0; i < pieces.size(); i++){
