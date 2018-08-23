@@ -39,13 +39,50 @@ public class Peon extends Piece{
 	}
 
 	public void mover(){
-		if(isWhite){
-			CasillasDestino.add(Tablero.tablero[casillaActual.getX()][casillaActual.getY() - 1]);
+		try{
+			if(isWhite){
+				CasillasDestino.add(Tablero.tablero[casillaActual.getX()][casillaActual.getY() - 1]);
+				if(!isMoved){
+					CasillasDestino.add(Tablero.tablero[casillaActual.getX()][casillaActual.getY() - 2]);
+				}
+			}
+			else{
+				CasillasDestino.add(Tablero.tablero[casillaActual.getX()][casillaActual.getY() + 1]);
+				if(!isMoved){
+					CasillasDestino.add(Tablero.tablero[casillaActual.getX()][casillaActual.getY() + 2]);
+				}
+			}
+			verificar();
+			isEnemy();
 		}
-		else{
-			CasillasDestino.add(Tablero.tablero[casillaActual.getX()][casillaActual.getY() + 1]);
-		}
-		verificar();
+		catch(ArrayIndexOutOfBoundsException e){}
 
+	}
+
+
+	private void isEnemy(){
+		for(int i = 0; i < PieceManager.pieces.size(); i++){
+			if(this.isWhite != PieceManager.pieces.get(i).isWhite){
+				if(isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX() + 1][casillaActual.getY() - 1]){
+					CasillasDestino.add(Tablero.tablero[casillaActual.getX() + 1][casillaActual.getY() - 1]);
+				}
+				else if(isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX() - 1][casillaActual.getY() - 1]){
+					CasillasDestino.add(Tablero.tablero[casillaActual.getX() - 1][casillaActual.getY() - 1]);
+				}
+				else if(!isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX() + 1][casillaActual.getY() + 1]){
+					CasillasDestino.add(Tablero.tablero[casillaActual.getX() + 1][casillaActual.getY() + 1]);
+				}
+				else if(!isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX() - 1][casillaActual.getY() + 1]){
+					CasillasDestino.add(Tablero.tablero[casillaActual.getX() - 1][casillaActual.getY() + 1]);
+				}
+				else if(isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX()][casillaActual.getY() - 1]){
+					CasillasDestino.remove(Tablero.tablero[casillaActual.getX() ][casillaActual.getY() - 1]);
+				}
+				else if(!isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX()][casillaActual.getY() + 1]){
+					CasillasDestino.remove(Tablero.tablero[casillaActual.getX() ][casillaActual.getY() + 1]);
+				}
+
+			}
+		}
 	}
 }

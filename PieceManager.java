@@ -19,12 +19,12 @@ public class PieceManager{
 		}
 	}
 
-	public void addPiece(Piece piece){
-		this.pieces.add(piece);
+	public static void addPiece(Piece piece){
+		pieces.add(piece);
 	}
 
-	public void removePiece(Piece piece){
-		this.pieces.remove(piece);
+	public static void removePiece(Piece piece){
+		pieces.remove(piece);
 	}
 
 	public void setBoard(){

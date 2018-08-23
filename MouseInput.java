@@ -11,27 +11,31 @@ public class MouseInput extends MouseInputAdapter{
 		
 	}
 	public void mouseReleased(MouseEvent e){
-		Tablero.movePiece(selectedPiece);
-		selectedPiece = null;
+		try{
+			Tablero.movePiece(selectedPiece);
+			selectedPiece = null;
+		}catch(NullPointerException ex){}
 	}
 
 	public void mouseDragged(MouseEvent e){
-		for(int i = 0; i < PieceManager.pieces.size(); i++){
-			try{
-				Piece tempPiece =  PieceManager.pieces.get(i);
-				if(selectedPiece == null && e.getX() >= tempPiece.getX() && e.getX() <= (tempPiece.getX() + 58) && e.getY() >= tempPiece.getY() && e.getY() <= (tempPiece.getY() + 58)){
-					selectedPiece = tempPiece;			
+		try{
+			for(int i = 0; i < PieceManager.pieces.size(); i++){
+				try{
+					Piece tempPiece =  PieceManager.pieces.get(i);
+					if(selectedPiece == null && e.getX() >= tempPiece.getX() && e.getX() <= (tempPiece.getX() + 58) && e.getY() >= tempPiece.getY() && e.getY() <= (tempPiece.getY() + 58)){
+						selectedPiece = tempPiece;			
+					}
+				}
+				catch(NullPointerException ex){
 				}
 			}
-			catch(NullPointerException ex){
-			}
-		}
-		if(selectedPiece != null){
-			selectedPiece.mover();
-			Tablero.marcarCasillas(selectedPiece);
-			selectedPiece.setX(e.getX()-29);
-			selectedPiece.setY(e.getY()-29);
+			if(selectedPiece != null){
+				selectedPiece.mover();
+				Tablero.marcarCasillas(selectedPiece);
+				selectedPiece.setX(e.getX()-29);
+				selectedPiece.setY(e.getY()-29);
 
-		}
+			}
+		}catch(NullPointerException ex){}
 	}
 }

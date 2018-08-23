@@ -43,8 +43,15 @@ public class Tablero{
 			for(int j = 0; j<tablero.length; j++){
 				if((piece.getX() + 29) >= (i*75) && (piece.getX() + 29)  <= ((i+1)*75) && (piece.getY() + 29)  >= (j*75) && (piece.getY() + 29) <= ((j+1)*75)){
 					desmarcarCasillas(piece);
-					piece.casillaActual = tablero[i][j];
+					for(int k = 0; k<piece.CasillasDestino.size(); k++){
+						if(Tablero.tablero[i][j] == piece.CasillasDestino.get(k)){
+							piece.casillaActual = Tablero.tablero[i][j];
+							piece.isMoved = true;
+							piece.kill();
+						}
+					}
 					piece.centrarPieza();
+					piece.CasillasDestino.clear();
 				}
 			}
 		}

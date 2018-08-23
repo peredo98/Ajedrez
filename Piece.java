@@ -11,7 +11,7 @@ public abstract class Piece{
 	protected int x, y, id;
 	protected BufferedImage img = null;
 
-	protected boolean isWhite;
+	protected boolean isWhite, isMoved;
 
 	public LinkedList<Casilla> CasillasDestino = new LinkedList<Casilla>();
 	
@@ -53,6 +53,14 @@ public abstract class Piece{
 		for(int i = 0; i < PieceManager.pieces.size(); i++){
 			if(this.isWhite == PieceManager.pieces.get(i).isWhite){
 				CasillasDestino.remove(PieceManager.pieces.get(i).casillaActual);
+			}
+		}
+	}
+
+	public void kill(){
+		for(int i = 0; i<PieceManager.pieces.size(); i++){
+			if(this.isWhite != PieceManager.pieces.get(i).isWhite && casillaActual == PieceManager.pieces.get(i).casillaActual){
+				PieceManager.removePiece(PieceManager.pieces.get(i));
 			}
 		}
 	}
