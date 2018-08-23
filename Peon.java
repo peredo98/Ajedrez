@@ -20,7 +20,7 @@ public class Peon extends Piece{
 	}
 
 	public void tick(){
-
+		coronarse();
 	}
 
 	public void render(Graphics g){
@@ -57,6 +57,12 @@ public class Peon extends Piece{
 		}
 		catch(ArrayIndexOutOfBoundsException e){}
 
+	}
+
+	private void coronarse(){
+		if(casillaActual.getY() == 7 || casillaActual.getY() == 0){
+			PieceManager.removePiece(this);
+		}
 	}
 
 

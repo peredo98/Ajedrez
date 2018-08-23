@@ -48,6 +48,18 @@ public class Tablero{
 							piece.casillaActual = Tablero.tablero[i][j];
 							piece.isMoved = true;
 							piece.kill();
+							if(!MouseInput.blackTurn){
+								MouseInput.blackTurn = true;
+								piece.centrarPieza();
+								piece.CasillasDestino.clear();
+								return;
+							}
+							else{
+								MouseInput.blackTurn = false;
+								piece.centrarPieza();
+								piece.CasillasDestino.clear();
+								return;
+							}
 						}
 					}
 					piece.centrarPieza();

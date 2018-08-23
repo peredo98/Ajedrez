@@ -4,6 +4,9 @@ import javax.swing.event.MouseInputAdapter;
 
 public class MouseInput extends MouseInputAdapter{
 	private Piece selectedPiece;
+
+	public static boolean blackTurn;
+
 	public MouseInput(){
 	}
 
@@ -22,7 +25,7 @@ public class MouseInput extends MouseInputAdapter{
 			for(int i = 0; i < PieceManager.pieces.size(); i++){
 				try{
 					Piece tempPiece =  PieceManager.pieces.get(i);
-					if(selectedPiece == null && e.getX() >= tempPiece.getX() && e.getX() <= (tempPiece.getX() + 58) && e.getY() >= tempPiece.getY() && e.getY() <= (tempPiece.getY() + 58)){
+					if(tempPiece.isWhite != blackTurn && selectedPiece == null && e.getX() >= tempPiece.getX() && e.getX() <= (tempPiece.getX() + 58) && e.getY() >= tempPiece.getY() && e.getY() <= (tempPiece.getY() + 58)){
 						selectedPiece = tempPiece;			
 					}
 				}
