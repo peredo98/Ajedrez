@@ -61,6 +61,10 @@ public class Peon extends Piece{
 
 	private void coronarse(){
 		if(casillaActual.getY() == 7 || casillaActual.getY() == 0){
+			Dama coronacion = new Dama(1, isWhite);
+			coronacion.casillaActual = casillaActual;
+			coronacion.centrarPieza();
+			PieceManager.addPiece(coronacion);
 			PieceManager.removePiece(this);
 		}
 	}
