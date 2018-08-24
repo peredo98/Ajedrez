@@ -10,6 +10,7 @@ public class MouseInput extends MouseInputAdapter{
 	public MouseInput(){
 	}
 
+	
 	public void mouseMoved(MouseEvent e){
 		
 	}

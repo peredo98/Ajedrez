@@ -44,6 +44,8 @@ public class PieceManager{
 		addPiece(new Peon(5, false));
 		addPiece(new Peon(6, false));
 		addPiece(new Peon(7, false));
+		addPiece(new Dama(0, true));
+		addPiece(new Dama(0, false));
 		MouseInput.blackTurn = false;
 		
 	}
