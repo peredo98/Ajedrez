@@ -46,6 +46,14 @@ public class PieceManager{
 		addPiece(new Peon(7, false));
 		addPiece(new Dama(0, true));
 		addPiece(new Dama(0, false));
+		addPiece(new Torre(0, true));
+		addPiece(new Torre(1, true));
+		addPiece(new Torre(0, false));
+		addPiece(new Torre(1, false));
+		addPiece(new Alfil(0, true));
+		addPiece(new Alfil(1, true));
+		addPiece(new Alfil(0, false));
+		addPiece(new Alfil(1, false));
 		MouseInput.blackTurn = false;
 		
 	}
