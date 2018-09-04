@@ -27,8 +27,7 @@ public class MouseInput extends MouseInputAdapter{
 				try{
 					Piece tempPiece =  PieceManager.pieces.get(i);
 					if(tempPiece.isWhite != blackTurn && selectedPiece == null && e.getX() >= tempPiece.getX() && e.getX() <= (tempPiece.getX() + 58) && e.getY() >= tempPiece.getY() && e.getY() <= (tempPiece.getY() + 58)){
-						selectedPiece = tempPiece;
-						buscarPieza();			
+						selectedPiece = tempPiece;		
 					}
 				}
 				catch(NullPointerException ex){
@@ -43,11 +42,5 @@ public class MouseInput extends MouseInputAdapter{
 			}
 		}catch(NullPointerException ex){}
 	}
-
-	// implenetacion de busqueda 
 	
-	private void buscarPieza(){
-		BusquedaSequencial<Piece> bs = new BusquedaSequencial<Piece>();
-		System.out.println(bs.busquedaSequencial( PieceManager.pieces , selectedPiece).getID());
-	}
 }
