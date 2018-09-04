@@ -8,15 +8,8 @@ import java.util.LinkedList;
 
 public class Torre extends Piece{
 
-	public Torre(int id, boolean isWhite){
-		super(id, isWhite);
-		if(isWhite){
-		casillaActual = Tablero.tablero[id*7][7];
-		}
-		else{
-		casillaActual = Tablero.tablero[id*7][0];
-		}
-		centrarPieza();
+	public Torre(String id, int x, int y, boolean isWhite){
+		super(id, x, y, isWhite);
 	}
 
 	public void tick(){

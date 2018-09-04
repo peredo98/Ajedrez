@@ -8,15 +8,8 @@ import java.util.LinkedList;
 
 public class Alfil extends Piece{
 
-	public Alfil(int id, boolean isWhite){
-		super(id, isWhite);
-		if(isWhite){
-		casillaActual = Tablero.tablero[id*3 + 2][7];
-		}
-		else{
-		casillaActual = Tablero.tablero[id*3 + 2][0];
-		}
-		centrarPieza();
+	public Alfil(String id, int x, int y, boolean isWhite){
+		super(id, x, y, isWhite);
 	}
 
 	public void tick(){

@@ -8,19 +8,24 @@ import java.util.LinkedList;
 public abstract class Piece{
 
 	public Casilla casillaActual;
-	protected int x, y, id;
+	protected int x, y;
+	protected String id;
 	protected BufferedImage img = null;
 
 	protected boolean isWhite, isMoved;
 
 	public LinkedList<Casilla> CasillasDestino = new LinkedList<Casilla>();
 	
-	public Piece(int id, boolean isWhite){
+	public Piece(String id, int x, int y, boolean isWhite){
 		this.id = id;
+		this.x = x;
+		this.y = y;
 		this.isWhite = isWhite;
+		casillaActual = Tablero.tablero[x][y];
+		centrarPieza();
 	}
 
-	public int getID(){
+	public String getID(){
 		return id;
 	}
 

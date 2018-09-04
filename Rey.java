@@ -8,15 +8,8 @@ import java.util.LinkedList;
 
 public class Rey extends Piece{
 
-	public Rey(int id, boolean isWhite){
-		super(id, isWhite);
-		if(isWhite){
-		casillaActual = Tablero.tablero[4][7];
-		}
-		else{
-		casillaActual = Tablero.tablero[4][0];
-		}
-		centrarPieza();
+	public Rey(String id, int x, int y, boolean isWhite){
+		super(id, x, y, isWhite);
 	}
 
 	public void tick(){

@@ -8,15 +8,8 @@ import java.util.LinkedList;
 
 public class Caballo extends Piece{
 
-	public Caballo(int id, boolean isWhite){
-		super(id, isWhite);
-		if(isWhite){
-		casillaActual = Tablero.tablero[id*5 + 1][7];
-		}
-		else{
-		casillaActual = Tablero.tablero[id*5 + 1][0];
-		}
-		centrarPieza();
+	public Caballo(String id, int x, int y, boolean isWhite){
+		super(id, x, y, isWhite);
 	}
 
 	public void tick(){

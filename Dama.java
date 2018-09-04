@@ -8,15 +8,8 @@ import java.util.LinkedList;
 
 public class Dama extends Piece{
 
-	public Dama(int id, boolean isWhite){
-		super(id, isWhite);
-		if(isWhite){
-		casillaActual = Tablero.tablero[3][7];
-		}
-		else{
-		casillaActual = Tablero.tablero[3][0];
-		}
-		centrarPieza();
+	public Dama(String id, int x, int y, boolean isWhite){
+		super(id, x, y, isWhite);
 	}
 
 	public void tick(){

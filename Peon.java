@@ -8,15 +8,8 @@ import java.util.LinkedList;
 
 public class Peon extends Piece{
 
-	public Peon(int id, boolean isWhite){
-		super(id, isWhite);
-		if(isWhite){
-		casillaActual = Tablero.tablero[id][6];
-		}
-		else{
-		casillaActual = Tablero.tablero[id][1];
-		}
-		centrarPieza();
+	public Peon(String id, int x, int y, boolean isWhite){
+		super(id, x, y, isWhite);
 	}
 
 	public void tick(){
@@ -45,8 +38,13 @@ public class Peon extends Piece{
 				if(!isMoved){
 					CasillasDestino.add(Tablero.tablero[casillaActual.getX()][casillaActual.getY() - 2]);
 				}
+			verificar();
+			isEnemy();
 			}
-			else{
+		}
+		catch(ArrayIndexOutOfBoundsException e){}
+		try{
+			if(!isWhite){
 				CasillasDestino.add(Tablero.tablero[casillaActual.getX()][casillaActual.getY() + 1]);
 				if(!isMoved){
 					CasillasDestino.add(Tablero.tablero[casillaActual.getX()][casillaActual.getY() + 2]);
@@ -60,10 +58,9 @@ public class Peon extends Piece{
 	}
 
 	private void coronarse(){
-		if(casillaActual.getY() == 7 || casillaActual.getY() == 0){
-			Dama coronacion = new Dama(1, isWhite);
-			coronacion.casillaActual = casillaActual;
-			coronacion.centrarPieza();
+		if((casillaActual.getY() == 7 || casillaActual.getY() == 0) && isMoved){
+			Dama coronacion = new Dama(id, casillaActual.getX(), casillaActual.getY(), isWhite);
+			centrarPieza();
 			PieceManager.addPiece(coronacion);
 			PieceManager.removePiece(this);
 		}
@@ -71,28 +68,65 @@ public class Peon extends Piece{
 
 
 	private void isEnemy(){
+		try{
 		for(int i = 0; i < PieceManager.pieces.size(); i++){
 			if(this.isWhite != PieceManager.pieces.get(i).isWhite){
 				if(isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX() + 1][casillaActual.getY() - 1]){
 					CasillasDestino.add(Tablero.tablero[casillaActual.getX() + 1][casillaActual.getY() - 1]);
+					break;
 				}
-				else if(isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX() - 1][casillaActual.getY() - 1]){
-					CasillasDestino.add(Tablero.tablero[casillaActual.getX() - 1][casillaActual.getY() - 1]);
-				}
-				else if(!isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX() + 1][casillaActual.getY() + 1]){
-					CasillasDestino.add(Tablero.tablero[casillaActual.getX() + 1][casillaActual.getY() + 1]);
-				}
-				else if(!isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX() - 1][casillaActual.getY() + 1]){
-					CasillasDestino.add(Tablero.tablero[casillaActual.getX() - 1][casillaActual.getY() + 1]);
-				}
-				else if(isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX()][casillaActual.getY() - 1]){
-					CasillasDestino.remove(Tablero.tablero[casillaActual.getX() ][casillaActual.getY() - 1]);
-				}
-				else if(!isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX()][casillaActual.getY() + 1]){
-					CasillasDestino.remove(Tablero.tablero[casillaActual.getX() ][casillaActual.getY() + 1]);
-				}
-
 			}
 		}
+		}catch(ArrayIndexOutOfBoundsException e){}
+		try{
+		for(int i = 0; i < PieceManager.pieces.size(); i++){
+			if(this.isWhite != PieceManager.pieces.get(i).isWhite){		
+				if(isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX() - 1][casillaActual.getY() - 1]){
+					CasillasDestino.add(Tablero.tablero[casillaActual.getX() - 1][casillaActual.getY() - 1]);
+					break;
+				}
+			}
+		}
+		}catch(ArrayIndexOutOfBoundsException e){}
+		try{
+		for(int i = 0; i < PieceManager.pieces.size(); i++){
+			if(this.isWhite != PieceManager.pieces.get(i).isWhite){	
+				if(!isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX() + 1][casillaActual.getY() + 1]){
+					CasillasDestino.add(Tablero.tablero[casillaActual.getX() + 1][casillaActual.getY() + 1]);
+					break;
+				}
+			}
+		}
+		}catch(ArrayIndexOutOfBoundsException e){}
+		try{
+		for(int i = 0; i < PieceManager.pieces.size(); i++){
+			if(this.isWhite != PieceManager.pieces.get(i).isWhite){	
+				if(!isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX() - 1][casillaActual.getY() + 1]){
+					CasillasDestino.add(Tablero.tablero[casillaActual.getX() - 1][casillaActual.getY() + 1]);
+					break;
+				}
+			}
+		}
+		}catch(ArrayIndexOutOfBoundsException e){}
+		try{
+		for(int i = 0; i < PieceManager.pieces.size(); i++){
+			if(this.isWhite != PieceManager.pieces.get(i).isWhite){	
+				if(isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX()][casillaActual.getY() - 1]){
+					CasillasDestino.remove(Tablero.tablero[casillaActual.getX() ][casillaActual.getY() - 1]);
+					break;
+				}
+			}
+		}
+		}catch(ArrayIndexOutOfBoundsException e){}
+		try{
+		for(int i = 0; i < PieceManager.pieces.size(); i++){
+			if(this.isWhite != PieceManager.pieces.get(i).isWhite){	
+				if(!isWhite && PieceManager.pieces.get(i).casillaActual == Tablero.tablero[casillaActual.getX()][casillaActual.getY() + 1]){
+					CasillasDestino.remove(Tablero.tablero[casillaActual.getX() ][casillaActual.getY() + 1]);
+					break;
+				}
+			}
+		}
+		}catch(ArrayIndexOutOfBoundsException e){}
 	}
 }
